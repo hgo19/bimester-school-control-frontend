@@ -1,0 +1,45 @@
+.card-container {
+  align-items: flex-start;
+  display: flex;
+}
+
+.discipline-card-biologia {
+  background-color: #cc4090;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 146px;
+  justify-content: space-around;
+  width: 158px;
+}
+
+.discipline-name {
+  color: #ecedee;
+  font-size: 18px;
+  line-height: 18px;
+  padding-left: 16px;
+}
+
+.discipline-created-at {
+  color: #ecedee;
+  font-size: 12px;
+  line-height: 12px;
+  padding-left: 16px;
+}
+
+.discipline-grade-container {
+  align-items: center;
+  background-color: #0f0f0f;
+  color: #ff5964;
+  display: flex;
+  font-size: 12px;
+  gap: 6.43px;
+  height: 30px;
+  line-height: 14px;
+  opacity: 0.7;
+  width: 100%;
+}
+
+.chart-vector {
+  padding-left: 16px;
+}
