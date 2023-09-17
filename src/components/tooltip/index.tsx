@@ -1,12 +1,6 @@
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import './styles.css'
-
-type TooltipProps = {
-  children: ReactNode
-  delay: number
-  direction: string
-  content: string
-}
+import { TooltipProps } from './types'
 
 export default function Tooltip({
   children,
