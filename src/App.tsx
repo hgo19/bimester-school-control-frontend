@@ -6,7 +6,7 @@ function App() {
   return (
     <main>
       <section>
-        <BimesterHeader />
+        <BimesterHeader bimester={'Bimestre 1'} />
         <section className="disciplines-container">
           <DisciplineCard
             name={'Biologia'}
