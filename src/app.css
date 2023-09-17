@@ -1,0 +1,7 @@
+.disciplines-container {
+  display: grid;
+  grid-column-gap: 1px;
+  grid-row-gap: 31.5px;
+  grid-template-columns: repeat(2, auto);
+  margin-left: 34px;
+}
