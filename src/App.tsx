@@ -4,7 +4,7 @@ import BimesterHeader from './components/bimester-header'
 
 function App() {
   return (
-    <main>
+    <main className="main-container">
       <section>
         <BimesterHeader bimester={'Bimestre 1'} />
         <section className="disciplines-container">

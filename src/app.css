@@ -5,3 +5,7 @@
   grid-template-columns: repeat(2, auto);
   margin-left: 34px;
 }
+
+.main-container {
+  margin-top: 62px;
+}

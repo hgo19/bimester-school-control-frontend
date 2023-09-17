@@ -8,7 +8,9 @@
 
 .add-button {
   background-color: #e9ff1a;
+  border: none;
   border-radius: 12px;
+  cursor: pointer;
   height: 37px;
   width: 58px;
 }
