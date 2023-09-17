@@ -43,3 +43,9 @@
 .chart-vector {
   padding-left: 16px;
 }
+
+.dump-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

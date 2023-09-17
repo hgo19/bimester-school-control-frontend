@@ -1,6 +1,7 @@
 import './styles.css'
 import chartVector from '../../assets/Chart.svg'
 import dumpVector from '../../assets/dump-vector.svg'
+import Tooltip from '../tooltip'
 
 export default function DisciplineCard() {
   return (
@@ -15,7 +16,11 @@ export default function DisciplineCard() {
           <span>Nota: 3</span>
         </div>
       </div>
-      <img src={dumpVector} alt="dump-vector" />
+      <Tooltip delay={0} direction={'right'} content={'Remover'}>
+        <button className="dump-button">
+          <img src={dumpVector} alt="dump-vector" />
+        </button>
+      </Tooltip>
     </div>
   )
 }
