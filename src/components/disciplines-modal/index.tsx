@@ -1,16 +1,13 @@
 import './styles.css'
 import closeButton from '../../assets/X.svg'
+import { ModalContentProps } from './types'
 
-type ModalContentProps = {
-  onClose: () => void
-}
-
-export default function ModalContent({ onClose }: ModalContentProps) {
+export default function ModalContent({ onClose, bimester }: ModalContentProps) {
   return (
     <div className="modal-overlay">
       <div className="modal">
         <header className="modal-header">
-          <h1 className="modal-title">Bimestre 1</h1>
+          <h1 className="modal-title">{bimester}</h1>
           <button onClick={onClose} className="close-button">
             <img src={closeButton} alt="close" />
           </button>

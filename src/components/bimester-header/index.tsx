@@ -20,7 +20,10 @@ export default function BimesterHeader({ bimester }: BimesterHeaderTypes) {
       </button>
       {showModal &&
         createPortal(
-          <ModalContent onClose={() => setShowModal(false)} />,
+          <ModalContent
+            onClose={() => setShowModal(false)}
+            bimester={bimester}
+          />,
           document.body
         )}
     </header>
