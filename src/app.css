@@ -1,11 +1,14 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  margin-top: 62px;
+}
+
 .disciplines-container {
   display: grid;
   grid-column-gap: 1px;
   grid-row-gap: 31.5px;
   grid-template-columns: repeat(2, auto);
   margin-left: 34px;
-}
-
-.main-container {
-  margin-top: 62px;
 }

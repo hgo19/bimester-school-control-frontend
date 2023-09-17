@@ -42,7 +42,7 @@ function App() {
         </section>
       </section>
       <section>
-        <BimesterHeader bimester={'Bimestre 1'} />
+        <BimesterHeader bimester={'Bimestre 2'} />
         <section className="disciplines-container">
           <DisciplineCard
             name={'Biologia'}
