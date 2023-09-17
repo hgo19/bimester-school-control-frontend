@@ -3,14 +3,29 @@
   display: flex;
 }
 
-.discipline-card-biologia {
-  background-color: #cc4090;
+.discipline-card {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   height: 146px;
   justify-content: space-around;
   width: 158px;
+}
+
+.biologia {
+  background-color: #cc4090;
+}
+
+.geografia {
+  background-color: #c26719;
+}
+
+.artes {
+  background-color: #05a2c2;
+}
+
+.sociologia {
+  background-color: #9b19c2;
 }
 
 .discipline-name {
@@ -30,7 +45,6 @@
 .discipline-grade-container {
   align-items: center;
   background-color: #0f0f0f;
-  color: #ff5964;
   display: flex;
   font-size: 12px;
   gap: 6.43px;
@@ -40,8 +54,22 @@
   width: 100%;
 }
 
-.chart-vector {
+.chart-alignment {
+  align-items: center;
+  display: flex;
   padding-left: 16px;
+}
+
+.grade-red {
+  color: #ff5964;
+}
+
+.grade-yellow {
+  color: #ffff99;
+}
+
+.grade-green {
+  color: #05ff00;
 }
 
 .dump-button {
