@@ -1,0 +1,14 @@
+.bimester-header-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 31px 37px;
+  width: 349px;
+}
+
+.add-button {
+  background-color: #e9ff1a;
+  border-radius: 12px;
+  height: 37px;
+  width: 58px;
+}

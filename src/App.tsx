@@ -1,11 +1,12 @@
 import DisciplineCard from './components/discipline-card'
 import './app.css'
+import BimesterHeader from './components/bimester-header'
 
 function App() {
   return (
     <main>
       <section>
-        <header>Bimestre 1</header>
+        <BimesterHeader />
         <section className="disciplines-container">
           <DisciplineCard
             name={'Biologia'}
