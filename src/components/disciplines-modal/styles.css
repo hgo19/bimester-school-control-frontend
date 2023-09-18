@@ -46,6 +46,7 @@
 .close-button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
   height: 32px;
   padding: 0;
   width: 32px;
@@ -178,4 +179,39 @@ input:focus-visible {
   padding: 16px 32px;
   text-align: center;
   width: 134px;
+}
+
+@media screen and (min-width: 970px) {
+  .modal {
+    width: 678px;
+    height: 379px;
+  }
+
+  .modal-header {
+    width: 605px;
+  }
+
+  .modal-title {
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    height: 65px;
+    line-height: 18px; /* 56.25% */
+    width: 218px;
+  }
+
+  .discipline-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0px;
+    column-gap: 23px;
+    width: 600px;
+  }
+
+  .confirm-button {
+    margin-left: 451px;
+    width: 184px;
+  }
 }
