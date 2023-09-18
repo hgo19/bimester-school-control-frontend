@@ -66,31 +66,35 @@ export default function Home() {
       </section>
       <section>
         <BimesterHeader bimestre={'Bimestre 3'} />
-        {results.third &&
-          results.third.map((e, index) => (
-            <DisciplineCard
-              key={index}
-              name={e.discipline}
-              createdAt={handleDate(e.createdAt)}
-              grade={e.grade}
-              gradeColor={handleGradeColor(e.grade)}
-              fillColor={handleGradeColor(e.grade)}
-            />
-          ))}
+        <section className="disciplines-container">
+          {results.third &&
+            results.third.map((e, index) => (
+              <DisciplineCard
+                key={index}
+                name={e.discipline}
+                createdAt={handleDate(e.createdAt)}
+                grade={e.grade}
+                gradeColor={handleGradeColor(e.grade)}
+                fillColor={handleGradeColor(e.grade)}
+              />
+            ))}
+        </section>
       </section>
       <section>
         <BimesterHeader bimestre={'Bimestre 4'} />
-        {results.fourth &&
-          results.fourth.map((e, index) => (
-            <DisciplineCard
-              key={index}
-              name={e.discipline}
-              createdAt={handleDate(e.createdAt)}
-              grade={e.grade}
-              gradeColor={handleGradeColor(e.grade)}
-              fillColor={handleGradeColor(e.grade)}
-            />
-          ))}
+        <section className="disciplines-container">
+          {results.fourth &&
+            results.fourth.map((e, index) => (
+              <DisciplineCard
+                key={index}
+                name={e.discipline}
+                createdAt={handleDate(e.createdAt)}
+                grade={e.grade}
+                gradeColor={handleGradeColor(e.grade)}
+                fillColor={handleGradeColor(e.grade)}
+              />
+            ))}
+        </section>
       </section>
     </main>
   )
