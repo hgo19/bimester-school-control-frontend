@@ -24,3 +24,28 @@
   height: 37px;
   width: 58px;
 }
+
+@media screen and (min-width: 970px) {
+  .bimester-header-container {
+    margin: 0 0 31px 0;
+    width: 880px;
+  }
+
+  .add-button {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    width: 183px;
+  }
+
+  .button-text {
+    color: #0f0f0f;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .plus-svg {
+    height: 32px;
+    width: 32px;
+  }
+}
