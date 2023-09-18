@@ -20,6 +20,7 @@ export type PropsBimesterResultContext = {
   isUpdated: boolean
   setIsUpdated: React.Dispatch<React.SetStateAction<boolean>>
   setResults: React.Dispatch<React.SetStateAction<ResultsType>>
+  fetchData: () => Promise<void>
 }
 
 export type PropsBimesterResultProvider = {

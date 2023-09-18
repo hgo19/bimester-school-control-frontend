@@ -4,6 +4,8 @@ import Tooltip from '../tooltip'
 import { DisciplineCardTypes } from './types'
 import ChartSvg from '../chart-svg'
 import { deleteBimesterResult } from '../../services/api'
+import { useContext } from 'react'
+import BimesterResultContext from '../../context/bimester-result'
 
 export default function DisciplineCard({
   id,
@@ -13,9 +15,12 @@ export default function DisciplineCard({
   gradeColor,
   fillColor
 }: DisciplineCardTypes) {
+  const { fetchData } = useContext(BimesterResultContext)
+
   const deleteDiscipline = async (id: string) => {
     try {
       await deleteBimesterResult(id)
+      await fetchData()
     } catch (error) {
       console.log(error)
     }
