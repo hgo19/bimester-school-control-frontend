@@ -4,6 +4,7 @@ import { ModalContentProps } from './types'
 import React, { useContext, useState } from 'react'
 import { postBimesterResult } from '../../services/api'
 import BimesterResultContext from '../../context/bimester-result'
+import { AxiosError } from 'axios'
 
 export default function ModalContent({ onClose, bimestre }: ModalContentProps) {
   const bimesterMapping = {
@@ -45,12 +46,30 @@ export default function ModalContent({ onClose, bimestre }: ModalContentProps) {
     }))
   }
 
+  const errorTrigger = (message: string) => {
+    if (message.includes('Discipline must be')) {
+      window.alert('Tenha certeza de ter escolhido uma das disciplinas.')
+    } else if (message.includes('There is already a discipline')) {
+      window.alert('Já existe essa disciplina cadastrada no bimestre desejado.')
+    } else if (message.includes('Grade value must be')) {
+      window.alert('A nota do aluno tem que ser um valor entre 0 e 10.')
+    } else {
+      window.alert('Algo inesperado aconteceu, recarregue a página.')
+    }
+  }
+
   const submitResult = async () => {
     try {
       const { bimester, discipline, grade } = bimesterResult
       await postBimesterResult(bimester, discipline, grade)
       await fetchData()
-    } catch (error) {
+    } catch (error: AxiosError | any) {
+      if (error.response) {
+        const errorResponse = error.response.data
+        errorTrigger(errorResponse.error)
+      } else {
+        errorTrigger('Unexpected Error')
+      }
       console.log('Erro ao fazer inserir um novo resultado', error)
     }
   }
