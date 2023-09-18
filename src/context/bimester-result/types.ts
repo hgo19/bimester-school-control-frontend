@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
 export type BimesterFromApi = {
+  id: string
   bimester: string
   discipline: string
   grade: number

@@ -3,14 +3,23 @@ import dumpVector from '../../assets/dump-vector.svg'
 import Tooltip from '../tooltip'
 import { DisciplineCardTypes } from './types'
 import ChartSvg from '../chart-svg'
+import { deleteBimesterResult } from '../../services/api'
 
 export default function DisciplineCard({
+  id,
   name,
   createdAt,
   grade,
   gradeColor,
   fillColor
 }: DisciplineCardTypes) {
+  const deleteDiscipline = async (id: string) => {
+    try {
+      await deleteBimesterResult(id)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <div className="card-container">
       <div className={`discipline-card ${name.toLowerCase()}`}>
@@ -26,7 +35,11 @@ export default function DisciplineCard({
         </div>
       </div>
       <Tooltip delay={0} direction={'right'} content={'Remover'}>
-        <button className="dump-button">
+        <button
+          type="button"
+          onClick={() => deleteDiscipline(id)}
+          className="dump-button"
+        >
           <img src={dumpVector} alt="dump-vector" />
         </button>
       </Tooltip>

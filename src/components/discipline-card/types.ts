@@ -1,4 +1,5 @@
 export type DisciplineCardTypes = {
+  id: string
   name: string
   createdAt: string
   grade: number

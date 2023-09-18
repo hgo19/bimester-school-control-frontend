@@ -18,3 +18,7 @@ export const postBimesterResult = async (
   const response = await axios.post(API_URL, { bimester, discipline, grade })
   return response.data
 }
+
+export const deleteBimesterResult = async (id: string) => {
+  await axios.delete(API_URL + id)
+}

@@ -39,6 +39,7 @@ export default function Home() {
             results.first.map((e, index) => (
               <DisciplineCard
                 key={index}
+                id={e.id}
                 name={e.discipline}
                 createdAt={handleDate(e.createdAt)}
                 grade={e.grade}
@@ -55,6 +56,7 @@ export default function Home() {
             results.second.map((e, index) => (
               <DisciplineCard
                 key={index}
+                id={e.id}
                 name={e.discipline}
                 createdAt={handleDate(e.createdAt)}
                 grade={e.grade}
@@ -71,6 +73,7 @@ export default function Home() {
             results.third.map((e, index) => (
               <DisciplineCard
                 key={index}
+                id={e.id}
                 name={e.discipline}
                 createdAt={handleDate(e.createdAt)}
                 grade={e.grade}
@@ -87,6 +90,7 @@ export default function Home() {
             results.fourth.map((e, index) => (
               <DisciplineCard
                 key={index}
+                id={e.id}
                 name={e.discipline}
                 createdAt={handleDate(e.createdAt)}
                 grade={e.grade}
