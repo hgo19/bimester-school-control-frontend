@@ -6,6 +6,16 @@
   width: 349px;
 }
 
+.bimester-header-title {
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  height: 24px;
+  line-height: 18px; /* 100% */
+  width: 113px;
+}
+
 .add-button {
   background-color: #e9ff1a;
   border: none;

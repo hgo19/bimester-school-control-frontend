@@ -15,7 +15,7 @@ export default function BimesterHeader({ bimestre }: BimesterHeaderTypes) {
 
   return (
     <header className="bimester-header-container">
-      <h3>{bimestre}</h3>
+      <h3 className="bimester-header-title">{bimestre}</h3>
       <Tooltip delay={0} direction={'top'} content={'Adicionar'}>
         <button type="button" onClick={handleClick} className="add-button">
           <img src={plusSvg} alt="plus-svg" />
