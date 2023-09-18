@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useRef, useState } from 'react'
 import { getBimesterResults } from '../../services/api'
 import {
   BimesterFromApi,
@@ -14,7 +14,8 @@ const DEFAULT_VALUE: PropsBimesterResultContext = {
     fourth: []
   },
   isUpdated: false,
-  setIsUpdated: () => {}
+  setIsUpdated: () => {},
+  setResults: () => {}
 }
 
 const BimesterResultContext =
@@ -24,23 +25,30 @@ const BimesterResultProvider = ({ children }: PropsBimesterResultProvider) => {
   const [results, setResults] = useState(DEFAULT_VALUE.results)
   const [isUpdated, setIsUpdated] = useState(false)
 
+  const isInitialMount = useRef(true)
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getBimesterResults()
-        const filteredResults = {
-          first: filterByBimester(data, 'PRIMEIRO'),
-          second: filterByBimester(data, 'SEGUNDO'),
-          third: filterByBimester(data, 'TERCEIRO'),
-          fourth: filterByBimester(data, 'QUARTO')
+    if (isInitialMount.current) {
+      isInitialMount.current = false
+    } else {
+      // Your useEffect code here to be run on update
+      const fetchData = async () => {
+        try {
+          const data = await getBimesterResults()
+          const filteredResults = {
+            first: filterByBimester(data, 'PRIMEIRO'),
+            second: filterByBimester(data, 'SEGUNDO'),
+            third: filterByBimester(data, 'TERCEIRO'),
+            fourth: filterByBimester(data, 'QUARTO')
+          }
+          setResults(filteredResults)
+        } catch (error) {
+          console.error('Erro ao buscar os resultados dos bimestres:', error)
         }
-        setResults(filteredResults)
-      } catch (error) {
-        console.error('Erro ao buscar os resultados dos bimestres:', error)
       }
+      fetchData()
     }
-    fetchData()
-  }, [isUpdated])
+  }, [setResults])
 
   const filterByBimester = (data: BimesterFromApi[], bimester: string) => {
     return data.filter((e) => e.bimester === bimester)
@@ -48,7 +56,7 @@ const BimesterResultProvider = ({ children }: PropsBimesterResultProvider) => {
 
   return (
     <BimesterResultContext.Provider
-      value={{ results, isUpdated, setIsUpdated }}
+      value={{ results, isUpdated, setIsUpdated, setResults }}
     >
       {children}
     </BimesterResultContext.Provider>

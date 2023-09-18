@@ -1,6 +1,6 @@
 import './styles.css'
 import closeButton from '../../assets/X.svg'
-import { ModalContentProps } from './types'
+import { BimesterOutputData, ModalContentProps } from './types'
 import React, { useContext, useState } from 'react'
 import { postBimesterResult } from '../../services/api'
 import BimesterResultContext from '../../context/bimester-result'
@@ -22,7 +22,7 @@ export default function ModalContent({ onClose, bimestre }: ModalContentProps) {
   const [bimesterResult, setBimesterResult] = useState(INITIAL_STATE)
   const [selected, setSelected] = useState(0)
 
-  const { setIsUpdated, isUpdated } = useContext(BimesterResultContext)
+  const { setResults } = useContext(BimesterResultContext)
 
   const handleClick = (
     buttonId: number,
@@ -45,17 +45,39 @@ export default function ModalContent({ onClose, bimestre }: ModalContentProps) {
     }))
   }
 
+  const handleBimester = (data: BimesterOutputData): void => {
+    if (bimestre === 'Bimestre 1') {
+      setResults((prevResults) => ({
+        ...prevResults,
+        first: [...prevResults.first, data]
+      }))
+    } else if (bimestre === 'Bimestre 2') {
+      setResults((prevResults) => ({
+        ...prevResults,
+        second: [...prevResults.second, data]
+      }))
+    } else if (bimestre === 'Bimestre 3') {
+      setResults((prevResults) => ({
+        ...prevResults,
+        third: [...prevResults.third, data]
+      }))
+    } else if (bimestre === 'Bimestre 4') {
+      setResults((prevResults) => ({
+        ...prevResults,
+        fourth: [...prevResults.fourth, data]
+      }))
+    }
+  }
+
   const submitResult = async () => {
     try {
       const { bimester, discipline, grade } = bimesterResult
-      await postBimesterResult(bimester, discipline, grade)
-      setIsUpdated(!isUpdated)
+      const data = await postBimesterResult(bimester, discipline, grade)
+      handleBimester(data)
     } catch (error) {
       console.log('Erro ao fazer inserir um novo resultado', error)
     }
   }
-
-  console.log(bimesterResult)
 
   return (
     <div className="modal-overlay">

@@ -8,16 +8,17 @@ export type BimesterFromApi = {
 }
 
 type ResultsType = {
-  first: BimesterFromApi[] | undefined
-  second: BimesterFromApi[] | undefined
-  third: BimesterFromApi[] | undefined
-  fourth: BimesterFromApi[] | undefined
+  first: BimesterFromApi[]
+  second: BimesterFromApi[]
+  third: BimesterFromApi[]
+  fourth: BimesterFromApi[]
 }
 
 export type PropsBimesterResultContext = {
   results: ResultsType
   isUpdated: boolean
   setIsUpdated: React.Dispatch<React.SetStateAction<boolean>>
+  setResults: React.Dispatch<React.SetStateAction<ResultsType>>
 }
 
 export type PropsBimesterResultProvider = {
