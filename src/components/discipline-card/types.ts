@@ -3,5 +3,5 @@ export type DisciplineCardTypes = {
   createdAt: string
   grade: number
   gradeColor: string
-  fillColor: string
+  fillColor: 'grade-red' | 'grade-yellow' | 'grade-green'
 }

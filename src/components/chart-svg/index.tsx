@@ -1,6 +1,4 @@
-type DumpSvgType = {
-  fillColor: 'grade-red' | 'grade-yellow' | 'grade-green'
-}
+import { DumpSvgType } from './types'
 
 const colors = {
   'grade-red': '#ff5964',

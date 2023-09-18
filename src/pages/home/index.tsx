@@ -6,6 +6,7 @@ import DisciplineCard from '../../components/discipline-card'
 import BimesterHeader from '../../components/bimester-header'
 
 import './styles.css'
+import { HandleGradeColorType } from './types'
 
 export default function Home() {
   const { results } = useContext(BimesterResultContext)
@@ -19,7 +20,7 @@ export default function Home() {
     return `${day}/${month}/${year}`
   }
 
-  const handleGradeColor = (grade: number): string => {
+  const handleGradeColor = (grade: number): HandleGradeColorType => {
     if (grade < 6) {
       return 'grade-red'
     }
