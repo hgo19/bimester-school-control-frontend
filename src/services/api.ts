@@ -9,3 +9,12 @@ export const getBimesterResults = async () => {
 
   return response.data
 }
+
+export const postBimesterResult = async (
+  bimester: string,
+  discipline: string,
+  grade: number
+) => {
+  const response = await axios.post(API_URL, { bimester, discipline, grade })
+  return response.data
+}

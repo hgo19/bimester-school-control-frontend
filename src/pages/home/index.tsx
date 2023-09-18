@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <main className="main-container">
       <section>
-        <BimesterHeader bimester={'Bimestre 1'} />
+        <BimesterHeader bimestre={'Bimestre 1'} />
         <section className="disciplines-container">
           {results.first &&
             results.first.map((e, index) => (
@@ -48,21 +48,23 @@ export default function Home() {
         </section>
       </section>
       <section>
-        <BimesterHeader bimester={'Bimestre 2'} />
-        {results.second &&
-          results.second.map((e, index) => (
-            <DisciplineCard
-              key={index}
-              name={e.discipline}
-              createdAt={handleDate(e.createdAt)}
-              grade={e.grade}
-              gradeColor={handleGradeColor(e.grade)}
-              fillColor={handleGradeColor(e.grade)}
-            />
-          ))}
+        <BimesterHeader bimestre={'Bimestre 2'} />
+        <section className="disciplines-container">
+          {results.second &&
+            results.second.map((e, index) => (
+              <DisciplineCard
+                key={index}
+                name={e.discipline}
+                createdAt={handleDate(e.createdAt)}
+                grade={e.grade}
+                gradeColor={handleGradeColor(e.grade)}
+                fillColor={handleGradeColor(e.grade)}
+              />
+            ))}
+        </section>
       </section>
       <section>
-        <BimesterHeader bimester={'Bimestre 3'} />
+        <BimesterHeader bimestre={'Bimestre 3'} />
         {results.third &&
           results.third.map((e, index) => (
             <DisciplineCard
@@ -76,7 +78,7 @@ export default function Home() {
           ))}
       </section>
       <section>
-        <BimesterHeader bimester={'Bimestre 4'} />
+        <BimesterHeader bimestre={'Bimestre 4'} />
         {results.fourth &&
           results.fourth.map((e, index) => (
             <DisciplineCard

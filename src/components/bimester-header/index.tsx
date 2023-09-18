@@ -6,7 +6,7 @@ import ModalContent from '../disciplines-modal'
 import { createPortal } from 'react-dom'
 import Tooltip from '../tooltip'
 
-export default function BimesterHeader({ bimester }: BimesterHeaderTypes) {
+export default function BimesterHeader({ bimestre }: BimesterHeaderTypes) {
   const [showModal, setShowModal] = useState(false)
 
   const handleClick = () => {
@@ -15,7 +15,7 @@ export default function BimesterHeader({ bimester }: BimesterHeaderTypes) {
 
   return (
     <header className="bimester-header-container">
-      <h3>{bimester}</h3>
+      <h3>{bimestre}</h3>
       <Tooltip delay={0} direction={'left'} content={'Adicionar'}>
         <button type="button" onClick={handleClick} className="add-button">
           <img src={plusSvg} alt="plus-svg" />
@@ -25,7 +25,7 @@ export default function BimesterHeader({ bimester }: BimesterHeaderTypes) {
         createPortal(
           <ModalContent
             onClose={() => setShowModal(false)}
-            bimester={bimester}
+            bimestre={bimestre}
           />,
           document.body
         )}

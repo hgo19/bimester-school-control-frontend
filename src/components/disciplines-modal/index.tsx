@@ -1,13 +1,67 @@
 import './styles.css'
 import closeButton from '../../assets/X.svg'
 import { ModalContentProps } from './types'
+import React, { useContext, useState } from 'react'
+import { postBimesterResult } from '../../services/api'
+import BimesterResultContext from '../../context/bimester-result'
 
-export default function ModalContent({ onClose, bimester }: ModalContentProps) {
+export default function ModalContent({ onClose, bimestre }: ModalContentProps) {
+  const bimesterMapping = {
+    'Bimestre 1': 'PRIMEIRO',
+    'Bimestre 2': 'SEGUNDO',
+    'Bimestre 3': 'TERCEIRO',
+    'Bimestre 4': 'QUARTO'
+  }
+
+  const INITIAL_STATE = {
+    bimester: bimesterMapping[`${bimestre}`],
+    discipline: '',
+    grade: 0
+  }
+
+  const [bimesterResult, setBimesterResult] = useState(INITIAL_STATE)
+  const [selected, setSelected] = useState(0)
+
+  const { setIsUpdated, isUpdated } = useContext(BimesterResultContext)
+
+  const handleClick = (
+    buttonId: number,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    const target = event.target as HTMLButtonElement
+    const innerHTML = target.innerHTML
+    setSelected(buttonId)
+    setBimesterResult((prevState) => ({
+      ...prevState,
+      discipline: innerHTML
+    }))
+  }
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target
+    setBimesterResult((prevState) => ({
+      ...prevState,
+      grade: Number(value)
+    }))
+  }
+
+  const submitResult = async () => {
+    try {
+      const { bimester, discipline, grade } = bimesterResult
+      await postBimesterResult(bimester, discipline, grade)
+      setIsUpdated(!isUpdated)
+    } catch (error) {
+      console.log('Erro ao fazer inserir um novo resultado', error)
+    }
+  }
+
+  console.log(bimesterResult)
+
   return (
     <div className="modal-overlay">
       <div className="modal">
         <header className="modal-header">
-          <h1 className="modal-title">{bimester}</h1>
+          <h1 className="modal-title">{bimestre}</h1>
           <button onClick={onClose} className="close-button">
             <img src={closeButton} alt="close" />
           </button>
@@ -15,25 +69,57 @@ export default function ModalContent({ onClose, bimester }: ModalContentProps) {
         <h4 className="modal-subtitle">Disciplina</h4>
         <div className="grade-discipline-container">
           <div className="discipline-cards-container">
-            <button className="discipline-small-card biologia-sm">
+            <button
+              onClick={(e) => handleClick(1, e)}
+              className={
+                selected === 1
+                  ? `discipline-small-card biologia-sm selected-${selected}`
+                  : 'discipline-small-card biologia-sm'
+              }
+            >
               Biologia
             </button>
-            <button className="discipline-small-card artes-sm selected">
+            <button
+              onClick={(e) => handleClick(2, e)}
+              className={
+                selected === 2
+                  ? `discipline-small-card artes-sm selected-${selected}`
+                  : 'discipline-small-card artes-sm'
+              }
+            >
               Artes
             </button>
-            <button className="discipline-small-card geografia-sm">
+            <button
+              onClick={(e) => handleClick(3, e)}
+              className={
+                selected === 3
+                  ? `discipline-small-card geografia-sm selected-${selected}`
+                  : 'discipline-small-card geografia-sm'
+              }
+            >
               Geografia
             </button>
-            <button className="discipline-small-card sociologia-sm">
+            <button
+              onClick={(e) => handleClick(4, e)}
+              className={
+                selected === 4
+                  ? `discipline-small-card sociologia-sm selected-${selected}`
+                  : 'discipline-small-card sociologia-sm'
+              }
+            >
               Sociologia
             </button>
           </div>
           <label>
             <p>Nota:</p>
-            <input type="number" />
+            <input type="number" onChange={handleChange} />
           </label>
         </div>
-        <button type="button" className="confirm-button">
+        <button
+          type="button"
+          onClick={() => submitResult()}
+          className="confirm-button"
+        >
           Confirmar
         </button>
       </div>
