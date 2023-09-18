@@ -12,3 +12,27 @@
   grid-template-columns: repeat(2, auto);
   margin-left: 34px;
 }
+
+@media screen and (min-width: 580px) {
+  .main-container {
+    align-items: center;
+  }
+
+  .disciplines-container {
+    grid-column-gap: 20px;
+    grid-template-columns: repeat(2, auto);
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 970px) {
+  .main-container {
+    align-items: center;
+  }
+
+  .disciplines-container {
+    grid-column-gap: 44px;
+    grid-template-columns: repeat(4, auto);
+    margin-left: 0;
+  }
+}
