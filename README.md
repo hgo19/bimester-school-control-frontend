@@ -18,7 +18,7 @@ Para desenvolvimento da aplicação foi utilizado:
 1. Clone o repositório
 
 ```
-git clone git@github.com:hgo19/bimester-school-control-backend.git
+git clone git@github.com:hgo19/bimester-school-control-frontend.git
 ```
 
 2. Vá para o diretório do repositório e instale as dependências
