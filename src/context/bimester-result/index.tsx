@@ -24,7 +24,6 @@ const BimesterResultContext =
 
 const BimesterResultProvider = ({ children }: PropsBimesterResultProvider) => {
   const [results, setResults] = useState(DEFAULT_VALUE.results)
-  console.log(results)
   const [isUpdated, setIsUpdated] = useState(false)
 
   const fetchData = useCallback(async () => {

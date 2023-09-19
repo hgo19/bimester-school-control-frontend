@@ -22,8 +22,6 @@ export default function DisciplineCard({
     try {
       await deleteBimesterResult(id)
       const deletedResult = results[bimester].filter((e) => e.id !== id)
-      console.log(deletedResult)
-
       setResults((prevState) => ({
         ...prevState,
         [bimester]: deletedResult
