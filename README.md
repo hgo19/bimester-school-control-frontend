@@ -24,7 +24,7 @@ git clone git@github.com:hgo19/bimester-school-control-frontend.git
 2. Vá para o diretório do repositório e instale as dependências
 
 ```
-cd bimester-school-control-frontend
+cd bimester-school-control-frontend &&
 npm install
 ```
 
