@@ -28,7 +28,7 @@ cd bimester-school-control-frontend
 npm install
 ```
 
-3. Tenha certeza de atualizar a URL da sua API em: `src/services/api.ts` para a rota em que seu backend está funcionando.
+3. Tenha certeza de atualizar a URL da sua API em: `src/services/api.ts` para a rota em que seu backend está funcionando. Para isso altere a porta na variavel `PORT` nesse arquivo.
 
 4. Por ultimo rode o comando:
 
