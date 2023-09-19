@@ -9,22 +9,30 @@ import BimesterResultContext from '../../context/bimester-result'
 
 export default function DisciplineCard({
   id,
+  bimester,
   name,
   createdAt,
   grade,
   gradeColor,
   fillColor
 }: DisciplineCardTypes) {
-  const { fetchData } = useContext(BimesterResultContext)
+  const { setResults, results } = useContext(BimesterResultContext)
 
   const deleteDiscipline = async (id: string) => {
     try {
       await deleteBimesterResult(id)
-      await fetchData()
+      const deletedResult = results[bimester].filter((e) => e.id !== id)
+      console.log(deletedResult)
+
+      setResults((prevState) => ({
+        ...prevState,
+        [bimester]: deletedResult
+      }))
     } catch (error) {
       console.log(error)
     }
   }
+
   return (
     <div className="card-container">
       <div className={`discipline-card ${name.toLowerCase()}`}>

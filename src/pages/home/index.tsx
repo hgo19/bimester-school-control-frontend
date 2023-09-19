@@ -40,6 +40,7 @@ export default function Home() {
               <DisciplineCard
                 key={index}
                 id={e.id}
+                bimester={'PRIMEIRO'}
                 name={e.discipline}
                 createdAt={handleDate(e.createdAt)}
                 grade={e.grade}
@@ -57,6 +58,7 @@ export default function Home() {
               <DisciplineCard
                 key={index}
                 id={e.id}
+                bimester={'SEGUNDO'}
                 name={e.discipline}
                 createdAt={handleDate(e.createdAt)}
                 grade={e.grade}
@@ -74,6 +76,7 @@ export default function Home() {
               <DisciplineCard
                 key={index}
                 id={e.id}
+                bimester={'TERCEIRO'}
                 name={e.discipline}
                 createdAt={handleDate(e.createdAt)}
                 grade={e.grade}
@@ -91,6 +94,7 @@ export default function Home() {
               <DisciplineCard
                 key={index}
                 id={e.id}
+                bimester={'QUARTO'}
                 name={e.discipline}
                 createdAt={handleDate(e.createdAt)}
                 grade={e.grade}

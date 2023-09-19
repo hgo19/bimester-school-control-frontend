@@ -1,6 +1,7 @@
 export type DisciplineCardTypes = {
   id: string
   name: string
+  bimester: 'PRIMEIRO' | 'SEGUNDO' | 'TERCEIRO' | 'QUARTO'
   createdAt: string
   grade: number
   gradeColor: string
