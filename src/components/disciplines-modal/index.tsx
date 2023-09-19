@@ -1,20 +1,20 @@
 import './styles.css'
 import closeButton from '../../assets/X.svg'
-import { ModalContentProps } from './types'
+import { BimesterInputType, BimesterMapping, ModalContentProps } from './types'
 import React, { useContext, useState } from 'react'
 import { postBimesterResult } from '../../services/api'
 import BimesterResultContext from '../../context/bimester-result'
 import { AxiosError } from 'axios'
 
 export default function ModalContent({ onClose, bimestre }: ModalContentProps) {
-  const bimesterMapping = {
+  const bimesterMapping: BimesterMapping = {
     'Bimestre 1': 'PRIMEIRO',
     'Bimestre 2': 'SEGUNDO',
     'Bimestre 3': 'TERCEIRO',
     'Bimestre 4': 'QUARTO'
   }
 
-  const INITIAL_STATE = {
+  const INITIAL_STATE: BimesterInputType = {
     bimester: bimesterMapping[`${bimestre}`],
     discipline: '',
     grade: 0
@@ -23,7 +23,7 @@ export default function ModalContent({ onClose, bimestre }: ModalContentProps) {
   const [bimesterResult, setBimesterResult] = useState(INITIAL_STATE)
   const [selected, setSelected] = useState(0)
 
-  const { fetchData } = useContext(BimesterResultContext)
+  const { setResults, results } = useContext(BimesterResultContext)
 
   const handleClick = (
     buttonId: number,
@@ -61,8 +61,16 @@ export default function ModalContent({ onClose, bimestre }: ModalContentProps) {
   const submitResult = async () => {
     try {
       const { bimester, discipline, grade } = bimesterResult
-      await postBimesterResult(bimester, discipline, grade)
-      await fetchData()
+      const data = await postBimesterResult(bimester, discipline, grade)
+
+      const arrData = [...results[bimester], data]
+
+      setResults((prevState) => ({
+        ...prevState,
+        [bimester]: [...arrData]
+      }))
+
+      onClose()
     } catch (error: AxiosError | any) {
       if (error.response) {
         const errorResponse = error.response.data

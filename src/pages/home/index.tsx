@@ -35,8 +35,8 @@ export default function Home() {
       <section>
         <BimesterHeader bimestre={'Bimestre 1'} />
         <section className="disciplines-container">
-          {results.first &&
-            results.first.map((e, index) => (
+          {results.PRIMEIRO &&
+            results.PRIMEIRO.map((e, index) => (
               <DisciplineCard
                 key={index}
                 id={e.id}
@@ -52,8 +52,8 @@ export default function Home() {
       <section>
         <BimesterHeader bimestre={'Bimestre 2'} />
         <section className="disciplines-container">
-          {results.second &&
-            results.second.map((e, index) => (
+          {results.SEGUNDO &&
+            results.SEGUNDO.map((e, index) => (
               <DisciplineCard
                 key={index}
                 id={e.id}
@@ -69,8 +69,8 @@ export default function Home() {
       <section>
         <BimesterHeader bimestre={'Bimestre 3'} />
         <section className="disciplines-container">
-          {results.third &&
-            results.third.map((e, index) => (
+          {results.TERCEIRO &&
+            results.TERCEIRO.map((e, index) => (
               <DisciplineCard
                 key={index}
                 id={e.id}
@@ -86,8 +86,8 @@ export default function Home() {
       <section>
         <BimesterHeader bimestre={'Bimestre 4'} />
         <section className="disciplines-container">
-          {results.fourth &&
-            results.fourth.map((e, index) => (
+          {results.QUARTO &&
+            results.QUARTO.map((e, index) => (
               <DisciplineCard
                 key={index}
                 id={e.id}

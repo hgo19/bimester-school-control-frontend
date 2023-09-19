@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
 import { getBimesterResults } from '../../services/api'
 import {
   BimesterFromApi,
@@ -8,10 +8,10 @@ import {
 
 const DEFAULT_VALUE: PropsBimesterResultContext = {
   results: {
-    first: [],
-    second: [],
-    third: [],
-    fourth: []
+    PRIMEIRO: [],
+    SEGUNDO: [],
+    TERCEIRO: [],
+    QUARTO: []
   },
   isUpdated: false,
   setIsUpdated: () => {},
@@ -24,35 +24,45 @@ const BimesterResultContext =
 
 const BimesterResultProvider = ({ children }: PropsBimesterResultProvider) => {
   const [results, setResults] = useState(DEFAULT_VALUE.results)
+  console.log(results)
   const [isUpdated, setIsUpdated] = useState(false)
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const data = await getBimesterResults()
       const filteredResults = {
-        first: filterByBimester(data, 'PRIMEIRO'),
-        second: filterByBimester(data, 'SEGUNDO'),
-        third: filterByBimester(data, 'TERCEIRO'),
-        fourth: filterByBimester(data, 'QUARTO')
+        PRIMEIRO: filterByBimester(data, 'PRIMEIRO'),
+        SEGUNDO: filterByBimester(data, 'SEGUNDO'),
+        TERCEIRO: filterByBimester(data, 'TERCEIRO'),
+        QUARTO: filterByBimester(data, 'QUARTO')
       }
       setResults(filteredResults)
     } catch (error) {
       console.error('Erro ao buscar os resultados dos bimestres:', error)
     }
-  }
+  }, [])
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [fetchData])
 
   const filterByBimester = (data: BimesterFromApi[], bimester: string) => {
     return data.filter((e) => e.bimester === bimester)
   }
 
+  const values = useMemo(
+    () => ({
+      results,
+      isUpdated,
+      setIsUpdated,
+      setResults,
+      fetchData
+    }),
+    [fetchData, isUpdated, results]
+  )
+
   return (
-    <BimesterResultContext.Provider
-      value={{ results, isUpdated, setIsUpdated, setResults, fetchData }}
-    >
+    <BimesterResultContext.Provider value={{ ...values }}>
       {children}
     </BimesterResultContext.Provider>
   )

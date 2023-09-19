@@ -9,10 +9,10 @@ export type BimesterFromApi = {
 }
 
 type ResultsType = {
-  first: BimesterFromApi[]
-  second: BimesterFromApi[]
-  third: BimesterFromApi[]
-  fourth: BimesterFromApi[]
+  PRIMEIRO: BimesterFromApi[]
+  SEGUNDO: BimesterFromApi[]
+  TERCEIRO: BimesterFromApi[]
+  QUARTO: BimesterFromApi[]
 }
 
 export type PropsBimesterResultContext = {
