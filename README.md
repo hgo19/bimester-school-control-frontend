@@ -1,27 +1,41 @@
-# React + TypeScript + Vite
+# Bimester School Control Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Introdução
 
-Currently, two official plugins are available:
+Bimester School Control Frontend que busca ser um dashboard do controle bimestral de notas de alunos. Alimentada por uma API, nela você consegue adicionar novos resultados bimestrais, excluir resultados ja existentes e visualizar todos os resultados disponíveis. A aplicação necessita de uma API para rodar.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+Para desenvolvimento da aplicação foi utilizado:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Typescript
+- React
+- Axios
+- Vite
 
-- Configure the top-level `parserOptions` property like this:
+### Rodando a Aplicação
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+1. Clone o repositório
+
+```
+git clone git@github.com:hgo19/bimester-school-control-backend.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Vá para o diretório do repositório e instale as dependências
+
+```
+cd bimester-school-control-frontend
+npm install
+```
+
+3. Tenha certeza de atualizar a URL da sua API em: `src/services/api.ts` para a rota em que seu backend está funcionando.
+
+4. Por ultimo rode o comando:
+
+```
+npm start
+```
+
+### Mas qual backend utilizar?
+
+Caso queira rodar a aplicação completa, tem um outro repositório em que é feito o backend estruturado e com os retornos adequados para o front. [CLIQUE AQUI!](https://github.com/hgo19/bimester-school-control-backend)
